@@ -1,20 +1,29 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+
+	"github.com/stellar/go/clients/horizonclient"
+)
 
 func main() {
-	fmt.Println("horizon api")
+	fmt.Println("Horizon API")
 
-	client := hClient.DefaultPublicNetClient
-	accountRequest := hClient.AccountRequest{AccountID: "GCLWGQPMKXQSPF776IU33AH4PZNOOWNAWGGKVTBQMIC5IMKUNP3E6NVU"}
+	client := horizonclient.DefaultPublicNetClient
+
+	accountRequest := horizonclient.AccountRequest{
+		AccountID: "GCLWGQPMKXQSPF776IU33AH4PZNOOWNAWGGKVTBQMIC5IMKUNP3E6NVU",
+	}
 
 	account, err := client.AccountDetail(accountRequest)
-    if err != nil {
-        fmt.Println(err)
-        return
-    }
-    
-    fmt.Print(account)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-
+	fmt.Printf("Account ID: %s\n", account.AccountID)
+	fmt.Printf("Balances:\n")
+	for _, b := range account.Balances {
+		fmt.Printf("Type: %s, Code: %s, Balance: %s\n", b.Asset.Type, b.Asset.Code, b.Balance)
+	}
 }
