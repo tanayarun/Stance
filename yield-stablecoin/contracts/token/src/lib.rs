@@ -1,6 +1,7 @@
 #![no_std]
 use openzeppelin_fungible_token::{
     self as fungible,
+    burnable::FungibleBurnable,
     mintable::{mint, FungibleMintable},
     FungibleToken,
 };
@@ -57,6 +58,17 @@ impl FungibleToken for Token {
 impl FungibleMintable for Token {
     fn mint(e: &Env, account: Address, amount: i128) {
         mint(e, &account, amount);
+    }
+}
+
+#[contractimpl]
+impl FungibleBurnable for Token {
+    fn burn(e: &Env, from: Address, amount: i128) {
+        fungible::burnable::burn(e, &from, amount)
+    }
+
+    fn burn_from(e: &Env, spender: Address, from: Address, amount: i128) {
+        fungible::burnable::burn_from(e, &spender, &from, amount);
     }
 }
 
