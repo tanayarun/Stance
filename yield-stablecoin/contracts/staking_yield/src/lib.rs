@@ -1,15 +1,23 @@
 #![no_std]
-use soroban_sdk::{contract, contractimpl, Address, Env};
+use soroban_sdk::{contract, contractimpl, contracttype, Address, Env};
 
 mod token_interface;
 use token_interface::TokenClient;
+
+#[contracttype]
+pub struct StakeDetail {
+    owner: Address,
+    total_staked: i128,
+}
 
 #[contract]
 pub struct StakingYield;
 
 #[contractimpl]
 impl StakingYield {
-    pub fn stake(_e: &Env, _amount: i128) {}
+    pub fn stake(e: &Env, user: Address, amount: i128) {
+        user.require_auth();
+    }
 
     pub fn get_token_balance(e: &Env, token_address: Address, user: Address) -> i128 {
         let token = TokenClient::new(e, &token_address);
