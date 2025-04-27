@@ -11,7 +11,7 @@ doctest = false
 [dependencies]
 soroban-sdk = { workspace = true }
 openzeppelin-fungible-token = { git = "https://github.com/OpenZeppelin/stellar-contracts", tag = "v0.1.0" }
-
+stellar-fungible = { git = "https://github.com/OpenZeppelin/stellar-contracts" }
 
 [dev-dependencies]
 soroban-sdk = { workspace = true, features = ["testutils"] }

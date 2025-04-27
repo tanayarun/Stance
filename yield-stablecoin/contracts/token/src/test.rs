@@ -22,3 +22,17 @@ fn mint() {
     assert_eq!(client.balance(&user), 500);
     assert_eq!(client.total_supply(), 500);
 }
+
+#[test]
+fn burn_token() {
+    let e = Env::default();
+    let client = create_client(&e);
+    let user = Address::generate(&e);
+
+    client.mint(&user, &500);
+    assert_eq!(client.balance(&user), 500);
+
+    user.require_auth();
+    client.burn(&user, &300);
+    assert_eq!(client.balance(&user), 200);
+}

@@ -1,11 +1,11 @@
 #![no_std]
-use openzeppelin_fungible_token::{
+use soroban_sdk::{contract, contractimpl, Address, Env, String};
+use stellar_fungible::{
     self as fungible,
     burnable::FungibleBurnable,
     mintable::{mint, FungibleMintable},
     FungibleToken,
 };
-use soroban_sdk::{contract, contractimpl, Address, Env, String};
 
 #[contract]
 pub struct Token;
