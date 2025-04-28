@@ -1,8 +1,5 @@
 #![no_std]
-use soroban_sdk::{contract, contractimpl, contracttype, Address, Env};
-
-mod token_interface;
-use token_interface::TokenClient;
+use soroban_sdk::{contract, contractimpl, contracttype, token, Address, Env};
 
 #[contracttype]
 pub struct StakeDetail {
@@ -20,12 +17,11 @@ impl StakingYield {
     }
 
     pub fn get_token_balance(e: &Env, token_address: Address, user: Address) -> i128 {
-        let token = TokenClient::new(e, &token_address);
+        let token = token::Client::new(e, &token_address);
         token.balance(&user)
     }
 
-    pub fn total_supply(e: &Env, token_address: Address) -> i128 {
-        let token = TokenClient::new(e, &token_address);
-        token.total_supply()
+    pub fn burn(e: &Env, token_address: Address) {
+        let token = token::Client::new(e, &token_address);
     }
 }

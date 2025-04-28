@@ -732,6 +732,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c9627da5196e5d8ed0b0495e61e518847578da83483c37288316d9b2e03a7f72"
 
 [[package]]
+name = "liquidity_pool"
+version = "0.0.0"
+dependencies = [
+ "num-integer",
+ "soroban-sdk",
+]
+
+[[package]]
 name = "log"
 version = "0.4.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1244,6 +1252,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "soroban-token-sdk"
+version = "22.0.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "858a3c2d7fce27bd105c4747850dfb2b0d945eb8880aeaa963d5c8ac659ca105"
+dependencies = [
+ "soroban-sdk",
+]
+
+[[package]]
 name = "soroban-wasmi"
 version = "0.31.1-soroban.20.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1420,6 +1437,7 @@ version = "0.0.0"
 dependencies = [
  "openzeppelin-fungible-token",
  "soroban-sdk",
+ "soroban-token-sdk",
  "stellar-fungible",
 ]
 
