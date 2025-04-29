@@ -9,7 +9,9 @@ crate-type = ["lib", "cdylib"]
 doctest = false
 
 [dependencies]
-num-integer = "0.1.46"
+num-integer = { version = "0.1.45", default-features = false, features = [
+  "i128",
+] }
 soroban-sdk = { workspace = true }
 
 [dev-dependencies]

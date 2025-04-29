@@ -1,6 +1,10 @@
 #![no_std]
 use soroban_sdk::{contract, contractimpl, contracttype, token, Address, Env};
 
+pub mod interface;
+use crate::interface::liquidity_pool::LiquidityPoolClient;
+use crate::interface::token_custom::CustomTokenClient;
+
 #[contracttype]
 pub struct StakeDetail {
     owner: Address,
