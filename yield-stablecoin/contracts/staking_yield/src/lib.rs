@@ -12,6 +12,8 @@ pub struct StakingYield;
 
 #[contractimpl]
 impl StakingYield {
+    pub fn __constructor(e: &Env) {}
+
     pub fn stake(e: &Env, user: Address, amount: i128) {
         user.require_auth();
     }
@@ -19,9 +21,5 @@ impl StakingYield {
     pub fn get_token_balance(e: &Env, token_address: Address, user: Address) -> i128 {
         let token = token::Client::new(e, &token_address);
         token.balance(&user)
-    }
-
-    pub fn burn(e: &Env, token_address: Address) {
-        let token = token::Client::new(e, &token_address);
     }
 }
