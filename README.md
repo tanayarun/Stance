@@ -1,3 +1,5 @@
+<img src="https://github.com/tanayarun/Stance/blob/main/assets/PHOTO-2025-04-30-09-07-41.jpg?raw=true" height="200" width="200">
+
 # Yield-Bearing Stablecoin — USDx
 
 A **Soroban-based smart contract** implementing a **yield-bearing stablecoin** protocol inspired by [Ethena Labs' USDe](https://www.ethena.fi). USDx is a decentralized synthetic dollar backed by staked wXLM and designed to offer consistent, scalable yield without traditional bank intermediaries.
